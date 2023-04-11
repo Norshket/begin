@@ -2,10 +2,11 @@ import './bootstrap';
 
 import { createApp } from 'vue';
 import App from './components/App.vue';
-import vuetify from './plugins/vuetify';
+import plugins from './plugins';
 import router from './router'
 
+
 const app = createApp({...App});
-app.use(vuetify)
+app.use(plugins)
 app.use(router)
 app.mount('#app');

@@ -3,38 +3,36 @@
         <!-- <loading ref="loading" /> -->
 
         <component :is="currentLayout" v-if="isRouterLoaded">
-        <v-card>
-            <h1>Hello App!</h1>
-            <p>
-                <router-link :to="{ name: 'main' }">main</router-link>
-                <router-link :to="{ name: 'about' }">about</router-link>
-            </p>
-
-            <router-view></router-view>
-        </v-card>
+            <v-fade-transition mode="out-in">
+                <router-view />
+            </v-fade-transition>
         </component>
     </v-app>
 </template>
 
 
 <script>
+import defaultLayout from '../layouts/default.vue'
+import authLayout from '../layouts/auth.vue'
+
 export default {
+    name: 'app',
+    components: {
+        defaultLayout,
+        authLayout,
+    },
+
     computed: {
-        isRouterLoaded: function () {            
+        isRouterLoaded: function () {
             return this.$route.name !== null
         },
 
         currentLayout: function () {
-
-            this.$route.matched.slice().reverse().find(route =>console.log(route.meta));
-
             const layout = this.$route.matched.slice().reverse().find(route => route.meta.layout)?.meta.layout || 'default'
-
             return layout + 'Layout'
         },
     },
 
-    
 }
 
 </script>
