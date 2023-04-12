@@ -1,9 +1,12 @@
 <template>
-  <v-container
-    class="auth-body fill-height"
+  <v-container 
+    class="auth-body fill-height" 
     fluid
   >
-    <v-row align="center" justify="center">
+    <v-row 
+      align="center" 
+      justify="center"
+    >
       <v-col cols="auto">
         <div class="layout-content">
           <slot />

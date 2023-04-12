@@ -1,9 +1,13 @@
 
-import Auth from './routes/auth'
+import AuthRoutes from './routes/auth'
+import CrmRoutes from './routes/crm'
+
 
 
 export default [
-  ...Auth,
+  ...AuthRoutes,
+  ...CrmRoutes,
+
 ]
 
 

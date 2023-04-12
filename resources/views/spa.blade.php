@@ -9,7 +9,13 @@
 
 <body>
     <div id="app"></div>
+    
+
+
     @vite('resources/js/app.js')
+    <script>
+        window.config = @json($config);
+    </script>
 </body>
 
 </html>

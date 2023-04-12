@@ -1,12 +1,20 @@
 import './bootstrap';
 
 import { createApp } from 'vue';
-import App from './components/App.vue';
-import plugins from './plugins';
+import vuetify from './plugins/vuetify'
+import i18n from './plugins/i18n'
 import router from './router'
+import { $api } from './api'
 
+import App from './components/App.vue';
 
-const app = createApp({...App});
-app.use(plugins)
-app.use(router)
-app.mount('#app');
+import './plugins'
+
+const app = createApp({ ...App });
+
+app.config.globalProperties.$api = $api
+
+app
+  .use(vuetify)
+  .use(i18n)
+  .use(router).mount('#app');

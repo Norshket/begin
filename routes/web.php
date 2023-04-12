@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\SpaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +15,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('{path}', function () {
-    return view('spa');
-})->where('path', '(.*)');
+Route::get('{path}', SpaController::class)->where('path', '(.*)');

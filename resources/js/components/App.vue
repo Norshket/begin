@@ -1,37 +1,40 @@
 <template>
-    <v-app>
-        <!-- <loading ref="loading" /> -->
-
-        <component :is="currentLayout" v-if="isRouterLoaded">
-            <v-fade-transition mode="out-in">
-                <router-view />
-            </v-fade-transition>
+  <v-app>
+    <router-view name="wrapper">
+      <v-fade-transition mode="out-in">
+        <component :is="currentLayout">
+          <router-view></router-view>
         </component>
-    </v-app>
+      </v-fade-transition>
+    </router-view>
+  </v-app>
 </template>
 
 
 <script>
-import defaultLayout from '../layouts/default.vue'
-import authLayout from '../layouts/auth.vue'
+
+import DefaultLayout from '../layouts/default.vue'
+import AuthLayout from '../layouts/auth.vue'
+import CrmLayout from '../layouts/crm.vue'
 
 export default {
-    name: 'app',
-    components: {
-        defaultLayout,
-        authLayout,
+  name: 'app',
+  components: {
+    DefaultLayout,
+    AuthLayout,
+    CrmLayout
+  },
+
+  computed: {
+    isRouterLoaded: function () {
+      return this.$route.name !== null
     },
 
-    computed: {
-        isRouterLoaded: function () {
-            return this.$route.name !== null
-        },
-
-        currentLayout: function () {
-            const layout = this.$route.matched.slice().reverse().find(route => route.meta.layout)?.meta.layout || 'default'
-            return layout + 'Layout'
-        },
+    currentLayout: function () {
+      const layout = this.$route.matched.slice().reverse().find(route => route.meta.layout)?.meta.layout || 'default'
+      return layout + '-layout'
     },
+  },
 
 }
 
