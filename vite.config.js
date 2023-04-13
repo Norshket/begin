@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
+import ViteRequireContext from '@originjs/vite-plugin-require-context'
 
 export default defineConfig({
 
@@ -23,6 +24,7 @@ export default defineConfig({
                 },
             },
         }),
+        ViteRequireContext(/* options */)
     ],
     resolve: {
         alias: {
